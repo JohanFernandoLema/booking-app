@@ -1,7 +1,11 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
-import authentication from './routes/auth.js'
+// Routes importing
+import authRoute from './routes/auth.js'
+import usersRoute from './routes/users.js'
+import hotelsRoute from './routes/hotels.js'
+import roomsRoute from './routes/rooms.js'
 const app = express()
 const port = 8000
 dotenv.config()
@@ -14,8 +18,12 @@ const connectDB = async () => {
     throw error
   }
 }
+// Routes connections
+app.use('/api/auth', authRoute)
+app.use('/api/users', usersRoute)
+app.use('/api/hotels', hotelsRoute)
+app.use('/api/rooms', roomsRoute)
 
-app.use('/auth', authentication)
 app.listen(port, () => {
   connectDB()
   console.log('App connected successfully')

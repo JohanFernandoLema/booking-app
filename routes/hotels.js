@@ -1,4 +1,5 @@
 import express from 'express'
+import Hotel from '../models/hotel'
 
 const router = express.Router()
 
@@ -7,7 +8,7 @@ const router = express.Router()
 // We use res so the server send info regarding the req the client did
 
 // CREATE
-router.post('/', (req, res) => {})
+
 // UPDATE
 // DELETE
 // GET

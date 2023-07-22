@@ -18,7 +18,10 @@ const connectDB = async () => {
     throw error
   }
 }
-// Routes connections
+// Routes connections (middlewares)
+// We use this middle ware in order to connect our links with postman, otherwise it wont work.
+app.use(express.json())
+
 app.use('/api/auth', authRoute)
 app.use('/api/users', usersRoute)
 app.use('/api/hotels', hotelsRoute)

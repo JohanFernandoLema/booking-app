@@ -26,18 +26,18 @@ const router = express.Router()
 // })
 
 // CREATE
-router.post('/', createUser)
+router.post('/', verifyUser, createUser)
 
 // UPDATE
-router.put('/:id', updateUser)
+router.put('/:id', verifyUser, updateUser)
 
 // DELETE
-router.delete('/:id', deleteUser)
+router.delete('/:id', verifyUser, deleteUser)
 
 // GET
-router.get('/:id', getUser)
+router.get('/:id', verifyUser, getUser)
 
 // GET ALL
-router.get('/', getAllUsers)
+router.get('/', verifyAdmin, getAllUsers)
 
 export default router

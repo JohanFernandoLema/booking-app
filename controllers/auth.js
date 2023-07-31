@@ -38,13 +38,17 @@ export const login = async (req, res, next) => {
       return next(createError(400, 'Credentials are not valid'))
     }
 
-    const token = jwk.sign(
+    const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.JWT
     )
 
     const { password, isAdmin, ...otherDetails } = user._doc
-    res.status(200).send({ ...otherDetails })
+    res
+      .cookie('access_token', token, {
+        httpOnly: true,
+      })
+      .send({ ...otherDetails })
   } catch (err) {
     next(err)
   }

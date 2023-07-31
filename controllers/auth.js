@@ -1,5 +1,6 @@
 import User from '../models/User.js'
 
+import jwt from 'jsonwebtoken'
 import { createError } from '../utils/error.js'
 import bcrypt from 'bcrypt'
 const saltRounds = 10
@@ -36,6 +37,12 @@ export const login = async (req, res, next) => {
     if (!isPasswordCorrect) {
       return next(createError(400, 'Credentials are not valid'))
     }
+
+    const token = jwk.sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.JWT
+    )
+
     const { password, isAdmin, ...otherDetails } = user._doc
     res.status(200).send({ ...otherDetails })
   } catch (err) {

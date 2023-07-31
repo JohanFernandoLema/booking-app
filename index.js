@@ -6,6 +6,7 @@ import authRoute from './routes/auth.js'
 import usersRoute from './routes/users.js'
 import hotelsRoute from './routes/hotels.js'
 import roomsRoute from './routes/rooms.js'
+import cookieParser from 'cookie-parser'
 const app = express()
 const port = 8000
 dotenv.config()
@@ -21,6 +22,7 @@ const connectDB = async () => {
 // Routes connections (middlewares)
 // We use this middle ware in order to connect our links with postman, otherwise it wont work.
 app.use(express.json())
+app.use(cookieParser)
 
 app.use('/api/auth', authRoute)
 app.use('/api/users', usersRoute)

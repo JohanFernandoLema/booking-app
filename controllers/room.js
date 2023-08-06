@@ -48,7 +48,7 @@ export const deleteRoom = async (req, res, next) => {
   }
 }
 
-// GET SINGLE HOTEL
+// GET SINGLE ROOM
 export const getRoom = async (req, res, next) => {
   try {
     const room = await Room.findById(req.params.id)
@@ -58,7 +58,7 @@ export const getRoom = async (req, res, next) => {
   }
 }
 
-// GET ALL HOTELS
+// GET ALL ROOMS
 export const getRooms = async (req, res, next) => {
   try {
     const rooms = await Room.find()

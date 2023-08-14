@@ -2,6 +2,7 @@ import express from 'express'
 import { createError } from '../utils/error.js'
 import {
   countByCity,
+  countByType,
   createHotel,
   deleteHotel,
   getAllHotels,
@@ -31,6 +32,6 @@ router.get('/find/:id', getHotel)
 // GET ALL
 router.get('/', getAllHotels)
 router.get('/countByCity', countByCity)
-router.get('/countByType', getAllHotels)
+router.get('/countByType', countByType)
 
 export default router

@@ -44,7 +44,7 @@ const HotelSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  features: {
+  featured: {
     type: Boolean,
     required: false,
   },

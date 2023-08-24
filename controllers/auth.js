@@ -27,7 +27,7 @@ export const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username })
     if (!user) {
-      return next(createError(404, 'Credential is not valid'))
+      return next(createError(404, 'Credentials are not valid "username"'))
     }
 
     const isPasswordCorrect = await bcrypt.compare(
@@ -35,7 +35,9 @@ export const login = async (req, res, next) => {
       user.password
     )
     if (!isPasswordCorrect) {
-      return next(createError(400, 'Credentials are not valid'))
+      return next(
+        createError(400, 'Credentials are not valid password "I am sad"')
+      )
     }
 
     const token = jwt.sign(
